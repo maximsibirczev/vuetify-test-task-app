@@ -1,28 +1,44 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <v-main class="main__container">
+      <v-container>
+        <Breadcrumbs :breadcrumbs="breadcrumbs"></Breadcrumbs>
+        <TitlePages :title="title"></TitlePages>
+        <PostCategories :categories="categories"/>
+        <Posts :posts="posts"></Posts>
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import Posts from "./components/Posts";
+import PostCategories from "./components/PostCategories";
+import Breadcrumbs from "./components/Breadcrumbs";
+import TitlePages from "./components/TitlePages";
+import data from './constants/fake-data'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    PostCategories,
+    Breadcrumbs,
+    TitlePages,
+    Posts,
+
+  },
+  data: () => ({
+    breadcrumbs: data.breadcrumbs,
+    title: data.title,
+    categories: data.categories,
+    posts: data.posts,
+  }),
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.main__container {
+  background: #F5F5FA;
 }
 </style>
